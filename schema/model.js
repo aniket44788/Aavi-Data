@@ -22,5 +22,5 @@ const schema = mongoose.Schema({
     },
 })
 
-const model = mongoose.model("aavi", schema)
+const model = mongoose.model("aavis", schema)
 module.exports =model;  
