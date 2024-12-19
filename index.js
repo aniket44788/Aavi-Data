@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
-const port = 8000
 const mongoose = require("mongoose");
 const signup = require("./routes/signup");
 const route = require("./routes/routes")
-
+const env = require("dotenv")
+const port = process.env.PORT
+env.config()
 app.use(express.json())
 app.use("/signup",signup)
 app.use("/api",route)
@@ -16,7 +17,7 @@ app.use("/api",route)
 main().catch((err) => console.log(err));
 
 async function main() {
-    await mongoose.connect("mongodb+srv://darkpanda44788:PCRLWKuyx4Vguo4y@cluster0aa.zxb7f.mongodb.net/aavi?retryWrites=true&w=majority&appName=Cluster0aa")
+    await mongoose.connect(process.env.URL)
     console.log("connected")
 }
 app.listen(port , ()=>{
